@@ -6,8 +6,8 @@ import json
 import os
 
 # --- DEFAULTS ---
-SERVER = 'cissa.webuntis.com'
-SCHOOL = 'Georg-herwegh-gym'
+SERVER = 'ghg-berlin.webuntis.com'
+SCHOOL = 'ghg-berlin'
 USER = 'S4936'
 PASSWORD = 'teny8.WebUntis'
 # -------------------
@@ -90,12 +90,16 @@ def get_timetable(start_date, end_date):
             elif slot.code == 'irregular':
                 status_msg = "ÄNDERUNG"
 
+            # Extract 'Information zur Stunde' if available
+            info = getattr(slot, 'info', "") or getattr(slot, 'lstext', "") or ""
+            
             export_data.append({
                 "start": slot.start.isoformat(),
                 "end": slot.end.isoformat(),
                 "title": f"{subj} {'(' + status_msg + ')' if status_msg else ''}".strip(),
                 "location": room,
-                "description": f"{teacher}"
+                "description": f"{teacher}",
+                "info": info
             })
 
         script_dir = os.path.dirname(os.path.abspath(__file__))

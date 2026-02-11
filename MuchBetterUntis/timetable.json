@@ -4,230 +4,263 @@
         "end": "2026-02-09T09:30:00",
         "title": "EK (ENTFÄLLT)",
         "location": "150",
-        "description": "NIEP"
+        "description": "NIEP",
+        "info": "60"
     },
     {
         "start": "2026-02-09T09:40:00",
         "end": "2026-02-09T10:40:00",
         "title": "EN",
         "location": "150",
-        "description": "WELL"
+        "description": "WELL",
+        "info": "75, 60"
     },
     {
         "start": "2026-02-09T10:55:00",
         "end": "2026-02-09T12:10:00",
         "title": "FR",
         "location": "150",
-        "description": "GEHR"
+        "description": "GEHR",
+        "info": "60"
     },
     {
         "start": "2026-02-09T10:55:00",
         "end": "2026-02-09T12:10:00",
         "title": "LA",
         "location": "018",
-        "description": "GATZ"
+        "description": "GATZ",
+        "info": "60"
     },
     {
         "start": "2026-02-09T12:50:00",
         "end": "2026-02-09T13:50:00",
         "title": "MA",
         "location": "150",
-        "description": "ZILL"
+        "description": "ZILL",
+        "info": "60"
     },
     {
         "start": "2026-02-09T14:00:00",
         "end": "2026-02-09T15:15:00",
         "title": "GE",
         "location": "150",
-        "description": "LHDE"
+        "description": "LHDE",
+        "info": "60, 75"
     },
     {
         "start": "2026-02-09T15:30:00",
         "end": "2026-02-09T16:15:00",
         "title": "Tr8-D",
         "location": "102",
-        "description": "BECH"
+        "description": "BECH",
+        "info": ""
     },
     {
         "start": "2026-02-10T09:40:00",
         "end": "2026-02-10T10:40:00",
         "title": "FR",
         "location": "150",
-        "description": "GOEZ"
+        "description": "GOEZ",
+        "info": "60"
     },
     {
         "start": "2026-02-10T09:40:00",
         "end": "2026-02-10T10:40:00",
         "title": "LA",
         "location": "204",
-        "description": "GATZ"
+        "description": "GATZ",
+        "info": "60"
     },
     {
         "start": "2026-02-10T10:55:00",
         "end": "2026-02-10T12:10:00",
         "title": "GE",
         "location": "150",
-        "description": "LHDE"
+        "description": "LHDE",
+        "info": "60, 75"
     },
     {
         "start": "2026-02-10T12:50:00",
         "end": "2026-02-10T13:50:00",
         "title": "DE (ENTFÄLLT)",
         "location": "150",
-        "description": "NELS"
+        "description": "NELS",
+        "info": "60"
     },
     {
         "start": "2026-02-10T12:50:00",
         "end": "2026-02-10T13:50:00",
         "title": "KU (ÄNDERUNG)",
         "location": "KU-1",
-        "description": "WTNG"
+        "description": "WTNG",
+        "info": "60"
     },
     {
         "start": "2026-02-10T14:00:00",
         "end": "2026-02-10T15:15:00",
         "title": "MU",
         "location": "201MU1",
-        "description": "LMBY"
+        "description": "LMBY",
+        "info": "60"
     },
     {
         "start": "2026-02-11T08:15:00",
         "end": "2026-02-11T09:30:00",
         "title": "N-CHO",
         "location": "Mensa",
-        "description": "BUDI"
+        "description": "BUDI",
+        "info": "75 (90)"
     },
     {
         "start": "2026-02-11T08:15:00",
         "end": "2026-02-11T09:30:00",
         "title": "N-CHO",
         "location": "Mensa",
-        "description": "HEGN"
+        "description": "HEGN",
+        "info": "75(90)"
     },
     {
         "start": "2026-02-11T08:15:00",
         "end": "2026-02-11T09:30:00",
         "title": "N-ORCH",
         "location": "211MU2",
-        "description": "PREC"
+        "description": "PREC",
+        "info": "75 (90)"
     },
     {
         "start": "2026-02-11T09:40:00",
         "end": "2026-02-11T10:40:00",
         "title": "SP",
         "location": "TH-2",
-        "description": "GEHR"
+        "description": "GEHR",
+        "info": "75, 60"
     },
     {
         "start": "2026-02-11T10:55:00",
         "end": "2026-02-11T12:10:00",
         "title": "BI",
         "location": "BI-Ü1",
-        "description": "HERR"
+        "description": "HERR",
+        "info": "75 Teilung"
     },
     {
         "start": "2026-02-11T12:50:00",
         "end": "2026-02-11T13:50:00",
         "title": "FR",
         "location": "150",
-        "description": "GOEZ"
+        "description": "GOEZ",
+        "info": "60"
     },
     {
         "start": "2026-02-11T12:50:00",
         "end": "2026-02-11T13:50:00",
         "title": "LA",
         "location": "019",
-        "description": "GATZ"
+        "description": "GATZ",
+        "info": "60"
     },
     {
         "start": "2026-02-11T14:00:00",
         "end": "2026-02-11T15:15:00",
         "title": "DE",
         "location": "150",
-        "description": "NELS"
+        "description": "NELS",
+        "info": "60"
     },
     {
         "start": "2026-02-12T08:15:00",
         "end": "2026-02-12T09:30:00",
         "title": "EN",
         "location": "150",
-        "description": "WELL"
+        "description": "WELL",
+        "info": "75, 60"
     },
     {
         "start": "2026-02-12T09:40:00",
         "end": "2026-02-12T10:40:00",
         "title": "MA",
         "location": "150",
-        "description": "ZILL"
+        "description": "ZILL",
+        "info": "60"
     },
     {
         "start": "2026-02-12T10:55:00",
         "end": "2026-02-12T12:10:00",
         "title": "DE",
         "location": "150",
-        "description": "NELS"
+        "description": "NELS",
+        "info": "60"
     },
     {
         "start": "2026-02-12T12:50:00",
         "end": "2026-02-12T13:50:00",
         "title": "ETH",
         "location": "150",
-        "description": "NELS"
+        "description": "NELS",
+        "info": "75"
     },
     {
         "start": "2026-02-12T14:00:00",
         "end": "2026-02-12T15:15:00",
         "title": "SP",
         "location": "TH-3",
-        "description": "GEHR"
+        "description": "GEHR",
+        "info": "75, 60"
     },
     {
         "start": "2026-02-13T08:15:00",
         "end": "2026-02-13T09:30:00",
         "title": "EREL",
         "location": "153",
-        "description": "KUSK"
+        "description": "KUSK",
+        "info": "60"
     },
     {
         "start": "2026-02-13T09:40:00",
         "end": "2026-02-13T10:40:00",
         "title": "MA",
         "location": "150",
-        "description": "ZILL"
+        "description": "ZILL",
+        "info": "60"
     },
     {
         "start": "2026-02-13T10:55:00",
         "end": "2026-02-13T12:10:00",
         "title": "CH",
         "location": "CH-Ü",
-        "description": "SRNR"
+        "description": "SRNR",
+        "info": "75,Teilung"
     },
     {
         "start": "2026-02-13T10:55:00",
         "end": "2026-02-13T12:10:00",
         "title": "PH",
         "location": "150",
-        "description": "MERT"
+        "description": "MERT",
+        "info": "75,Teilung"
     },
     {
         "start": "2026-02-13T12:50:00",
         "end": "2026-02-13T13:50:00",
         "title": "CH",
         "location": "150",
-        "description": "SRNR"
+        "description": "SRNR",
+        "info": "75,Teilung"
     },
     {
         "start": "2026-02-13T12:50:00",
         "end": "2026-02-13T13:50:00",
         "title": "PH",
         "location": "PH-Ü2",
-        "description": "MERT"
+        "description": "MERT",
+        "info": "75,Teilung"
     },
     {
         "start": "2026-02-13T14:00:00",
         "end": "2026-02-13T15:15:00",
         "title": "KU",
         "location": "150",
-        "description": "WTNG"
+        "description": "WTNG",
+        "info": "60"
     }
 ]
