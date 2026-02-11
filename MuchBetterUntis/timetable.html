@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Untis - Stundenplan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0c0f14;
+            --card-bg: rgba(23, 28, 36, 0.7);
+            --accent-color: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.4);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --slot-bg: rgba(255, 255, 255, 0.03);
+            --slot-hover: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            animation: fadeInDown 0.8s ease-out;
+            flex-shrink: 0;
+        }
+
+        .brand h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .timetable-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            overflow-x: auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timetable-scroll {
+            min-width: 1000px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timetable-header {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            gap: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--glass-border);
+            margin-bottom: 1rem;
+        }
+
+        .header-cell {
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .time-slot-row {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            min-height: 60px;
+        }
+
+        .time-sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding-right: 0.75rem;
+            border-right: 1px solid var(--glass-border);
+            text-align: right;
+        }
+
+        .time-start {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .time-end {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .day-column {
+            display: flex;
+            flex-direction: row;
+            gap: 0.4rem;
+            height: 100%;
+        }
+
+        .slot {
+            flex: 1;
+            min-width: 0;
+            background: var(--slot-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 0.5rem 0.6rem;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            font-size: 0.75rem;
+        }
+
+        .slot:hover {
+            background: var(--slot-hover);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+            z-index: 10;
+        }
+
+        .slot::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-color);
+            opacity: 0.4;
+        }
+
+        .slot:hover::before {
+            opacity: 1;
+        }
+
+        .lesson-info h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .lesson-info .details {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .status-badge {
+            font-size: 0.55rem;
+            padding: 0.05rem 0.25rem;
+            border-radius: 3px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .status-badge.cancelled {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .timetable-container {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .brand h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <h1>Better Untis</h1>
+            <p>Wochenplan</p>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: flex-end;">
+            <div class="date-display">
+                <div class="day" id="day-name">Lade...</div>
+                <div class="full-date" id="full-date">...</div>
+            </div>
+            <button onclick="window.location.href='login.html'"
+                style="background: var(--card-bg); border: 1px solid var(--glass-border); color: var(--text-secondary); padding: 0.5rem; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s;"
+                title="Login / Account">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="timetable-container">
+        <div class="timetable-scroll" id="timetable-content">
+            <div style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                Lade Daten...
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Date handling
+        const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+        const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+
+        const now = new Date();
+        document.getElementById('day-name').textContent = days[now.getDay()];
+        document.getElementById('full-date').textContent = `${now.getDate()}. ${months[now.getMonth()]} ${now.getFullYear()}`;
+
+        // Data fetching logic
+        async function fetchTimetable() {
+            try {
+                const response = await fetch('timetable.json');
+                if (!response.ok) throw new Error('Keine Daten vorhanden');
+                const data = await response.json();
+                renderTimetable(data);
+            } catch (error) {
+                console.error("Fehler beim Laden:", error);
+                document.getElementById('timetable-content').innerHTML = `
+                    <div style="padding: 3rem; text-align: center; color: var(--text-secondary);">
+                        <p>Noch keine Daten verfügbar. Bitte starte erst die <code>main.py --all</code>.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderTimetable(items) {
+            const container = document.getElementById('timetable-content');
+            if (!items || items.length === 0) {
+                container.innerHTML = '<div style="padding: 2rem; text-align: center;">Keine Stunden gefunden.</div>';
+                return;
+            }
+
+            // 1. Get unique dates (sorted)
+            const dates = [...new Set(items.map(i => i.start.split('T')[0]))].sort();
+
+            // 2. Get unique time slots (start times)
+            const timeSlots = [...new Set(items.map(i => i.start.split('T')[1].substring(0, 5)))].sort();
+
+            // Render Header row
+            let html = `<div class="timetable-header"><div></div>`;
+            dates.forEach(date => {
+                const d = new Date(date);
+                html += `<div class="header-cell">${days[d.getDay()]}<br><span style="font-size: 0.7rem; color: var(--text-secondary); opacity: 0.7;">${d.getDate()}.${d.getMonth() + 1}.</span></div>`;
+            });
+            html += `</div>`;
+
+            // Render Row for each time slot
+            timeSlots.forEach(timeStart => {
+                const sample = items.find(i => i.start.endsWith(timeStart + ":00") || i.start.endsWith(timeStart));
+                const timeEnd = sample ? (sample.end.includes('T') ? sample.end.split('T')[1].substring(0, 5) : sample.end.substring(0, 5)) : "";
+
+                html += `<div class="time-slot-row">
+                    <div class="time-sidebar">
+                        <div class="time-start">${timeStart}</div>
+                        <div class="time-end">${timeEnd}</div>
+                    </div>`;
+
+                dates.forEach(date => {
+                    const lessons = items.filter(i => i.start.startsWith(date) && (i.start.endsWith(timeStart + ":00") || i.start.endsWith(timeStart)));
+
+                    html += `<div class="day-column">`;
+                    lessons.forEach(lesson => {
+                        const isCancelled = lesson.title.toLowerCase().includes('entfällt');
+                        const cleanTitle = lesson.title.replace('(ENTFÄLLT)', '').replace('(ÄNDERUNG)', '').trim();
+                        html += `
+                            <div class="slot">
+                                <span class="status-badge ${isCancelled ? 'cancelled' : ''}">${isCancelled ? 'Entfällt' : 'Geplant'}</span>
+                                <div class="lesson-info">
+                                    <h3>${cleanTitle}</h3>
+                                    <div class="details">${lesson.location} | ${lesson.description}</div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                });
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        fetchTimetable();
+    </script>
+</body>
+
+</html>
