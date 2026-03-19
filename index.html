@@ -1,146 +1,93 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Better Untis - Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0c0f14;
-            --card: rgba(23, 28, 36, 0.7);
-            --accent: #4f46e5;
-            --text: #f3f4f6;
-            --text-dim: #9ca3af;
-        }
-
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
-        }
-
-        .hero {
-            text-align: center;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p {
-            color: var(--text-dim);
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 35px -10px rgba(79, 70, 229, 0.5);
-        }
-
-        .btn-secondary {
-            background: var(--card);
-            color: var(--text);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .status-dots {
-            position: absolute;
-            bottom: 2rem;
-            display: flex;
-            gap: 1.5rem;
-            color: var(--text-dim);
-            font-size: 0.875rem;
-        }
-
-        .dot {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .dot::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #10b981;
-            box-shadow: 0 0 10px #10b981;
-        }
-    </style>
+    <title>HeRo - Herwegh Robotics</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="hero">
-        <h1>Better Untis</h1>
-        <p>Dein modernisierter Stundenplan für das Georg-Herwegh-Gymnasium. Schneller, schöner, übersichtlicher.</p>
-
-        <div class="cta-group">
-            <a href="MuchBetterUntis/timetable.html" class="btn btn-primary">Zum Stundenplan</a>
-            <a href="MuchBetterUntis/login.html" class="btn btn-secondary">Account Einstellungen</a>
+    <header>
+        <div class="header-content">
+            <h1>HeRo <span>Herwegh Robotics</span></h1>
+            <p>Die Robotik-AG am Georg Herwegh Gymnasium</p>
+            <nav>
+                <a href="index.html" class="active">Startseite</a>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <div class="status-dots">
-        <div class="dot">Backend Online</div>
-        <div class="dot">Daten Aktuell</div>
-    </div>
+    <main>
+        <section class="hero">
+            <h2>Willkommen bei HeRo</h2>
+            <p>Wir sind die Robotik-AG des Georg Herwegh Gymnasiums. Mehrere Teams arbeiten gemeinsam an spannenden Projekten – von autonomen Linienfolger-Robotern bis hin zu komplexen Wettbewerbsaufgaben.</p>
+            <p style="margin-top: 0.8rem; color: var(--text);">Ob Programmierung, Elektronik oder mechanischer Aufbau – bei uns findet jeder seinen Bereich.</p>
+            <a href="https://www.herwegh-gymnasium.de/schulleben/fachbereiche/informatik/robotik-ag/" target="_blank" rel="noopener" class="school-link">
+                Mehr zur Robotik-AG auf unserer Schulseite
+            </a>
+        </section>
+
+        <section class="achievements">
+            <h2>Erfolge</h2>
+            <div id="achievement-list" class="achievement-grid">
+                <p class="no-achievements">Noch keine Erfolge – wir arbeiten daran!</p>
+            </div>
+        </section>
+
+        <section class="teams-overview">
+            <h2>Unsere Teams</h2>
+            <div class="team-grid">
+                <div class="team-card disabled">
+                    <h3>Team 1</h3>
+                    <p>Wettbewerb</p>
+                </div>
+                <div class="team-card disabled">
+                    <h3>Team 2</h3>
+                    <p>Prototyp</p>
+                </div>
+                <div class="team-card disabled">
+                    <h3>Team 3</h3>
+                    <p>Training</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h3>Mitmachen?</h3>
+            <p>Interesse an Robotik? Komm freitags in den Robotik-Raum (Tür links im Foyer). Für Schüler des Georg Herwegh Gymnasiums.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024-2026 HeRo – <a href="https://www.herwegh-gymnasium.de">Georg Herwegh Gymnasium</a></p>
+    </footer>
+
+    <script>
+        fetch('achievements.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('achievement-list');
+                const achievements = data.achievements;
+                const icons = ['🏆', '🥈', '🥉', '⭐'];
+
+                if (achievements.length > 0) {
+                    container.innerHTML = '';
+                    achievements.forEach((achievement, i) => {
+                        const card = document.createElement('div');
+                        card.className = 'achievement-card';
+                        card.innerHTML = `
+                            <div class="achievement-icon">${icons[i % icons.length]}</div>
+                            <div class="achievement-content">
+                                <span class="year">${achievement.year}</span>
+                                <h3>${achievement.title}</h3>
+                                <p>${achievement.description}</p>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                }
+            })
+            .catch(error => console.error('Fehler beim Laden:', error));
+    </script>
 </body>
-
 </html>
